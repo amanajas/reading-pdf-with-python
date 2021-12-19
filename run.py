@@ -12,18 +12,12 @@ def extract_text_image(from_file, lang='deu', image_type='jpeg', resolution=300)
     print("---------------------------------")
     pdf_file = wi(filename=from_file, resolution=resolution)
     image = pdf_file.convert(image_type)
-    image_blobs = []
     for img in image.sequence:
         img_page = wi(image=img)
-        image_blobs.append(img_page.make_blob(image_type))
-    extract = []
-    for img_blob in image_blobs:
-        image = Image.open(io.BytesIO(img_blob))
+        image = Image.open(io.BytesIO(img_page.make_blob(image_type)))
         text = pytesseract.image_to_string(image, lang=lang)
-        extract.append(text)
-    for item in extract:
-        for line in item.split("\n"):
-            print(line)
+        for part in text.split("\n"):
+            print("{}".format(part))
 
 
 def parse_text(from_file):
