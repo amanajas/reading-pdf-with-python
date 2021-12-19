@@ -30,9 +30,5 @@ def parse_text(from_file):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print("Must contain <file [<lang>]>")
-    else:
-        parse_text(sys.argv[1])
-        if len(sys.argv) >= 3:
-            extract_text_image(sys.argv[1], sys.argv[2])
+    parse_text(sys.argv[1])
+    extract_text_image(sys.argv[1], sys.argv[2])
