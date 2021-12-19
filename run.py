@@ -24,7 +24,7 @@ def parse_text(from_file):
     print("-- Parsing text", from_file, "--")
     text_raw = parser.from_file(from_file)
     print("---------------------------------")
-    print(text_raw['content'])
+    print(text_raw['content'].strip())
     print("---------------------------------")
 
 
